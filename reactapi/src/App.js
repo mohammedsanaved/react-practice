@@ -1,41 +1,25 @@
-import React, { useState } from 'react';
-
-import MoviesList from './components/MoviesList';
 import './App.css';
+import { useState } from 'react';
 
-function App() {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  async function fetchMoviesHandler() {
-    setIsLoading(true);
-    const response = await fetch('https://swapi.dev/api/films/');
-    const data = await response.json();
-
-    const transformedMovies = data.results.map((movieData) => {
-      return {
-        id: movieData.episode_id,
-        title: movieData.title,
-        openingText: movieData.opening_crawl,
-        releaseDate: movieData.release_date,
-      };
+export default function App() {
+  const [qoute, setQoute] = useState();
+  async function getQoute() {
+    const res = await fetch('https://quotes15.p.rapidapi.com/quotes/random/', {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '72b538699fmshe460fa2dc279765p1acdd9jsn98b77f788ec8',
+        'X-RapidAPI-Host': 'quotes15.p.rapidapi.com',
+      },
     });
-    setMovies(transformedMovies);
-    setIsLoading(false);
+    const data = await res.json();
+    setQoute(data.content);
   }
-
   return (
-    <React.Fragment>
-      <section>
-        <button onClick={fetchMoviesHandler}>Fetch Movies</button>
-      </section>
-      <section>
-        {!isLoading && movies.length > 0 && <MoviesList movies={movies} />}
-        {!isLoading && movies.length === 0 && <p>Found no movies.</p>}
-        {isLoading && <p>Loading...</p>}
-      </section>
-    </React.Fragment>
+    <div className='App'>
+      <div className='container'>
+        <h1>"{qoute}"</h1>
+      </div>
+      <button onClick={getQoute}>Get Some New Qoutes</button>
+    </div>
   );
 }
-
-export default App;

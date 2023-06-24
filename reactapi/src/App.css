@@ -1,4 +1,4 @@
-section {
+/* section {
   margin: 1rem auto;
   width: 90%;
   max-width: 40rem;
@@ -6,6 +6,29 @@ section {
   background-color: white;
   padding: 2rem;
   border-radius: 12px;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@300;400;500&family=Ubuntu:wght@400;500&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #222831;
+  font-family: 'Montserrat', sans-serif;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+button {
+  padding: 10px;
+  border: none;
+  background: rgb(255, 68, 0);
+  cursor: pointer;
+}
+.container {
+  color: whitesmoke;
+  margin: auto;
+  padding: 0 19px;
 }
 
 button {
@@ -26,4 +49,8 @@ button:hover,
 button:active {
   background-color: #460897;
   border-color: #460897;
+}
+.text {
+  font-size: larger;
+  color: aqua;
 }
