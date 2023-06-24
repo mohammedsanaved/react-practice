@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function App() {
   const [qoute, setQoute] = useState();
@@ -14,6 +14,9 @@ export default function App() {
     const data = await res.json();
     setQoute(data.content);
   }
+  useEffect(() => {
+    getQoute();
+  }, []);
   return (
     <div className='App'>
       <div className='container'>
